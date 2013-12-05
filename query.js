@@ -69,7 +69,7 @@ module.exports = {
       });
     }
 
-    sql += fields + ') VALUES (' + paramList(fields.length) + ')';
+    sql += fields + ') VALUES (' + paramList(props.length) + ')';
 
     return query(sql, values).then(function() {
       return 'Query successful!';
