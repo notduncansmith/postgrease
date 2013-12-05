@@ -11,6 +11,10 @@
     "postgresql",
     "pg"
   ],
+  "repository":
+  { "type": "git",
+    "url": "https://github.com/notduncansmith/postgrease"
+  },
   "author": "Duncan Smith",
   "license": "MIT",
   "dependencies": {

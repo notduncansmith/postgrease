@@ -71,7 +71,9 @@ module.exports = {
 
     sql += fields + ') VALUES (' + paramList(fields.length) + ')';
 
-    return query(sql, values);
+    return query(sql, values).then(function() {
+      return 'Query successful!';
+    });
   },
   query: query
 }
