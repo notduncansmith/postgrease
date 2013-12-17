@@ -60,7 +60,7 @@ This is a convenience method for selecting records from a database by their `id`
   
   - `params`: an array of ids to select by (you need to use an array, even if you only have one id)
   
-  - `fields`: an array of fields to select (you can select \* by setting fields to `['\*']`)
+  - `fields`: an array of fields to select (you can select \* by setting fields to `['*']`)
   
   - `table`: the name of the table to run this query against
 
