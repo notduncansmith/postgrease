@@ -24,33 +24,44 @@ var dbconfig = {
   password: 'mypassword'
 };
 
+var connstring = 'postgres://notduncansmith:mypassword@localhost:5432/example';
+
 db.configure(dbconfig);
+// db.configure(connstring);
 ```
+
 
 ## Usage
 
 **Important Notes:** 
+
   - All Postgrease methods return promises
-  - All methods except `query` use parameterized queries
+
+  - All methods use parameterized queries
 
 
 ### query
 
 This is a basic promise wrapper around pg's `client.query()` method.  It requires one parameter, `sql`, the SQL string to execute.
+
 If you want to make a parameterized query, you can also pass a second argument, `params`, which should be an array containing the values to be passed.
 
 ```javascript
-db.query('SELECT * FROM users')
+db.query('SELECT * FROM users WHERE username = ?', ['notduncansmith'])
 .then(function(results) {
   console.log(results);
 });
 ```
 
+
 ### select
 
-This is a convenience method for selecting records from a database by their `id`s.  It takes an options object with the following properties:
+This is a convenience method for selecting records from a database by their `id`.  It takes an options object with the following properties:
+  
   - `params`: an array of ids to select by (you need to use an array, even if you only have one id)
-  - `fields`: an array of fields to select (you can select * by setting fields to `['*']`)
+  
+  - `fields`: an array of fields to select (you can select \* by setting fields to `['\*']`)
+  
   - `table`: the name of the table to run this query against
 
 ```javascript
@@ -66,9 +77,11 @@ db.select(opts)
 });
 ```
 
+
 ### selectWhere
 
 This is like the `select` method, except you pass it a field to select on.
+
 ```javascript
 var opts = {
   params: ['notduncansmith'],
@@ -77,11 +90,12 @@ var opts = {
   table: 'users'
 };
 
-db.select(opts)
+db.selectWhere(opts)
 .then(function(results) {
   console.log(results);
 });
 ```
+
 
 ### selectAll
 
@@ -92,6 +106,7 @@ db.selectAll('users').then(function(results) {
   console.log(results);
 });
 ```
+
 
 ### insert
 
