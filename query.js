@@ -84,7 +84,7 @@ module.exports = {
 
     console.log('Query:', sql);
     return query(sql, params);
-  }
+  },
   query: query
 }
 
