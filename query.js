@@ -75,7 +75,7 @@ module.exports = {
       return 'Query successful!';
     });
   },
-  remove: function (opts) {
+  removeWhere: function (opts) {
     var sql = 'DELETE FROM ' + opts.tableName
       , params = opts.params
       , paramName = opts.removeBy || 'id';
