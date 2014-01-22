@@ -61,11 +61,11 @@ module.exports = {
 
     if (props.length == 1) {
       fields = props[0];
-      values.push(item[fields]);
+      values.push(getValue(item[fields]));
     } else {
       fields = props.join(',');
       props.forEach(function (propName) {
-        values.push(item[propName]);
+        values.push(getValue(item[propName]));
       });
     }
 
@@ -78,6 +78,16 @@ module.exports = {
   query: query
 }
 
+function getValue(value) {
+  switch (value) {
+    case null:
+    return 'NULL';
+    case undefined:
+    case '':
+    return '""';
+  }
+  return value;
+}
 
 function query(sql, params) {
   var deferred = q.defer();
